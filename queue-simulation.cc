@@ -3,6 +3,7 @@
 #include "ns3/internet-module.h"
 #include "ns3/point-to-point-module.h"
 #include "ns3/applications-module.h"
+#include "ns3/netanim-module.h"
 
 using namespace ns3;
 
@@ -14,6 +15,12 @@ int main (int argc, char *argv[])
 
   NodeContainer nodes;
   nodes.Create (2);
+
+
+  AnimationInterface anim ("queue-simulation.xml"); 
+
+  anim.SetConstantPosition (nodes.Get (0), 10.0, 20.0);  
+  anim.SetConstantPosition (nodes.Get (1), 50.0, 20.0); 
 
   PointToPointHelper pointToPoint;
   pointToPoint.SetDeviceAttribute ("DataRate", StringValue ("5Mbps"));
